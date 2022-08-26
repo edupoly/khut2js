@@ -2,6 +2,13 @@
     <head></head>
     <body>
         <script>
+            async function mul(a,b){
+                var ans = await a*b;
+                return ans
+            }
+            mul(12,3).then(function(res){console.log(res)}).catch(function(err){console.log(err)})
+
+
             function div(a,b){
                 if(b===0){
                     return Promise.reject('denominator cannot be zero')
@@ -27,8 +34,8 @@
                 console.log(err)
             })
 
-            console.log("hello last line")
-            
+            var x = div(33,0);
+            console.log(x)
         </script>
     </body>
 </html>

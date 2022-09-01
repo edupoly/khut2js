@@ -29,16 +29,25 @@
                     setStudents([...students,newstudent])
                 }
 
+                function deleteStudent(id){
+                    var temp = [...students];
+                    temp.splice(id,1);
+                    setStudents([...temp])
+                }
+                
                 return( <div className='betterview'>
                             Best Every Place Possible to Have Fun...
                             <br/>
                             <input type="text" id='d1'/>
                             <button onClick={addStudent}>Add Student</button>
                             {
-                                students.map((s)=>{
-                                    return (<li>
-                                        {s}
-                                    </li>)
+                                students.map((s,i)=>{
+                                    return (
+                                        <li>
+                                            {s}
+                                            <button onClick={()=>{deleteStudent(i)}}>Delete</button>
+                                        </li>
+                                    )
                                 })
                             }
                         </div>

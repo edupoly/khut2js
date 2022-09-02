@@ -15,17 +15,20 @@
         </style>
     </head>
     <body>
+        <h1 title="this is first hello element" >Hello Elements</h1>
+        <h1 title="We want to see winning students">Hello Elements</h1>
         <div id="root">
 
         </div>
         <script type="text/babel">
-            function Counter(){
-                var[count,setcount]=React.useState(0);
+            function Counter(props){
+                console.log("props:::::",props)
+                var[count,setcount]=React.useState(props.start);
                 function inc(){
-                    setcount(count+1)
+                    setcount(count+props.step)
                 }
                 function dec(){
-                    setcount(count-1)
+                    setcount(count-props.step)
                 }
                 return(
                     <div className='betterview'>
@@ -38,8 +41,8 @@
             function X(){
                 return(
                     <div>
-                        <Counter></Counter>
-                        <Counter></Counter>
+                        <Counter start={100} step={10}></Counter>
+                        <Counter start={200} step={50}></Counter>
                     </div>
                 )
             }
@@ -47,3 +50,7 @@
         </script>
     </body>
 </html>
+<!-- 
+    state
+    props
+ -->

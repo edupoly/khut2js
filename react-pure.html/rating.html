@@ -20,6 +20,8 @@
         </div>
         <script type="text/babel">
             function Rating(){
+                alert("Rating component first line")
+                var [count,setcount]=React.useState(0)
                 var [r,setR] = React.useState('');
                 var [ratings,setRatings] = React.useState([])
                 function rate(v){
@@ -28,8 +30,28 @@
                     temp.push(v);
                     setRatings(temp)
                 }
+                function inc(){setcount(count+1)}
+                function dec(){setcount(count-1)}
+                React.useEffect(()=>{
+                    alert("useEffect without depedency")
+                })
+                React.useEffect(()=>{
+                    console.log("useEffect with empty depedency")
+                },[])
+                React.useEffect(()=>{
+                    console.log("useEffect with r depedency")
+                },[r])
+                React.useEffect(()=>{
+                    console.log("useEffect with count depedency")
+                },[count])
+                
                 return(
                     <div className="betterview">
+                        <div className='betterview'>
+                            <h1>Count:{count}</h1>
+                            <button onClick={inc}>Inc</button>
+                            <button onClick={dec}>Dec</button>
+                        </div>
                         <button onClick={()=>{rate(1)}}>1</button>
                         <button onClick={()=>{rate(2)}}>2</button>
                         <button onClick={()=>{rate(3)}}>3</button>
@@ -46,7 +68,6 @@
                 )
             }
             ReactDOM.render(<Rating></Rating>,document.getElementById('root'))
-            console.dir(Array)
         </script>
     </body>
 </html>
@@ -54,3 +75,8 @@
     state
     props
  -->
+ <!-- 
+    mounting
+    updating
+    unmounting
+  -->
